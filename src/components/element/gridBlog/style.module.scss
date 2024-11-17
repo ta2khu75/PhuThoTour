@@ -1,0 +1,18 @@
+.container {
+    width: 1134px;
+}
+
+.search {
+    margin-bottom: 24px;
+}
+
+.listBlog {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 24px;
+    margin-bottom: 24px;
+}
+
+.paginationBlog {
+    margin-bottom: 80px;
+}

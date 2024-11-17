@@ -1,0 +1,25 @@
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.gridCard {
+    width: 774.33px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 22px;
+    column-gap: 22.11px;
+    margin-bottom: 36px;
+}
+
+.iconBottom {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 200px;
+}
+
+.tableData {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+}

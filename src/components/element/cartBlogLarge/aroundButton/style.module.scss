@@ -1,0 +1,13 @@
+@import "../../../../variable";
+
+.button {
+    border-radius: 50%;
+    display: inline;
+    background-color: white;
+    border: 1px $primary-500 solid;
+    width: 16px;
+    height: 16px;
+}
+.button+.button{
+    margin-left: 12px;
+}

@@ -1,0 +1,64 @@
+@import "../../../variable";
+
+.grid {
+    width: 1234px;
+    height: 807px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+    padding: 48px 54px;
+    box-sizing: border-box;
+}
+
+.search {
+    margin-bottom: 14px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin-bottom: 32px;
+
+    thead {
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21.09px;
+
+        tr {
+            th {
+                background-color: $primary-500;
+                text-align: start;
+                padding-left: 24px;
+                padding-top: 12px;
+                padding-bottom: 11px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            color: $gray-600;
+            td {
+                background-color: $primary-50;
+                padding: 12px 0px 11px 24px;
+            }
+        }
+    }
+}
+
+.start {
+    width: 82px;
+    text-align: center !important;
+    padding: 0px !important;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.end {
+    width: 150px;
+    text-align: center !important;
+    padding: 0px !important;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

@@ -1,0 +1,13 @@
+.grid {
+    // width: 1134px;
+    // height: 1016px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 24px;
+    column-gap: 25.5px;
+    margin-bottom: 32px;
+}
+
+.pagination {
+    margin-bottom: 80px;
+}

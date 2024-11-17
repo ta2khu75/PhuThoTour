@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { Outlet } from 'react-router-dom';
+import './App.scss';
+import Navigation from './components/fragment/navigation';
+import Footer from './components/fragment/footer';
+import style from "./style.module.scss";
+import bg from "./asset/bg.png"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navigation />
+      <div className={style.bg} style={{ backgroundImage: `url(${bg})` }}>
+        <div className={style.container}>
+          <Outlet />
+        </div>
+      </div>
+      <Footer />
+    </>
   );
 }
 

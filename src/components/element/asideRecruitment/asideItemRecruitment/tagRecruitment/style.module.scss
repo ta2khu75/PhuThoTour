@@ -1,0 +1,18 @@
+@import "../../../../../variable";
+
+.tag {
+    background-color: #ffffff;
+    color: $gray-600;
+    font-size: 14px;
+    line-height: 16.41px;
+    font-weight: 400;
+    padding: 12px;
+    display: inline-block;
+    border-radius: 999px;
+}
+
+.tag .active {
+    background-color: $primary-500;
+    font-weight: 600;
+    columns: #ffffff;
+}

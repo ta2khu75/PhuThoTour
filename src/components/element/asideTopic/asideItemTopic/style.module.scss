@@ -1,0 +1,20 @@
+@import "../../../../variable";
+
+.item {
+    color: $primary-300;
+    font-weight: 600;
+    line-height: 23.44px;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.item.active {
+    color: white;
+    font-weight: bold;
+    background-color: $primary-500;
+}
+
+.item+.item {
+    margin-top: 20px;
+}

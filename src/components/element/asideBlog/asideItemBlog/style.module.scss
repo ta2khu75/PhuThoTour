@@ -1,0 +1,37 @@
+@import "../../../../variable";
+
+.card {
+    width: 314px;
+    height: 102px;
+    display: flex;
+    margin-bottom: 16px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.cardImage {
+    width: 104px;
+    height: 102px;
+    border-radius: 4px 0 0 4px;
+}
+
+.cartText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 12px;
+}
+
+.cartTitle {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16.41px;
+    margin-bottom: 8px;
+    color: $gray-500
+}
+
+.cartDescription {
+    color: $gray-400;
+    font-size: 12px;
+    line-height: 14.06px;
+}

@@ -1,0 +1,49 @@
+.footer {
+    border-top: 1px solid white;
+    color: white;
+    height: 276px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #002549CC;
+}
+
+.footerContainer {
+    display: grid;
+    gap: 138px;
+    grid-template-columns: 490px 245px 536px;
+}
+
+.footerItem_logo {
+    display: flex;
+}
+
+.nameCompany {
+    font-weight: 700;
+    font-size: 13.5px;
+    line-height: 16.48px;
+}
+
+.nameProject {
+    font-size: 35px;
+    color: #99FFFF;
+    line-height: 42.73px;
+    letter-spacing: 4%;
+    font-weight: 700;
+}
+
+.footerTitle {
+    font-weight: 700;
+    size: 24px;
+    line-height: 26.88px;
+}
+
+.copyright {
+    font-size: 14px;
+}
+
+.footerItem1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

@@ -1,0 +1,57 @@
+@import "../../../variable";
+
+.cart {
+    width: 1134px;
+    height: 604px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.cartImage {
+    border-radius: 12px 12px 0 0;
+    width: 1134px;
+    height: 386px;
+}
+
+.cartDescription {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 400;
+    color: $gray-600;
+}
+
+.cartContainerText {
+    width: 845px;
+    height: 174px;
+}
+
+.cartContainer {
+    padding: 24px 24px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartTitle {
+    color: $primary-500;
+    font-weight: bold;
+    font-size: 38px;
+    margin-bottom: 24px;
+    line-height: 42.56px;
+}
+
+.leftAction {
+    margin-right: 7px;
+}
+
+.cartContainerAction {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.cartActionLogo {
+    width: 26.06px;
+    height: 16.61px;
+    margin-right: 4.89px;
+}
