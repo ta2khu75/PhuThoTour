@@ -4,6 +4,9 @@ import HomePage from "./components/pages/home";
 import BlogPage from "./components/pages/blog";
 import DocumentPage from "./components/pages/document";
 import RecruitmentPage from "./components/pages/recruitment";
+import BlogDetailsPage from "./components/pages/blog-details";
+import RecruitmentDetailsPage from "./components/pages/recruitment-details";
+import Thang from "./components/element/intro";
 
 const router = createBrowserRouter([
     {
@@ -22,8 +25,17 @@ const router = createBrowserRouter([
             }, {
                 element: <RecruitmentPage />,
                 path: "recruitment"
-            }
+            }, {
+                element: <BlogDetailsPage />,
+                path: "blog/details"
+            }, {
+                element: <RecruitmentDetailsPage />,
+                path: "recruitment/details"
+            },
         ]
-    },
+    }, {
+        element: <Thang />,
+        path: "/thang"
+    }
 ]);
 export default router;

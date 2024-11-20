@@ -1,0 +1,51 @@
+@import "../../../variable";
+
+.container {
+    width: 1348px;
+    border: 20px;
+    padding: 48px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 32px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 48px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.7);
+
+    header {
+        margin-bottom: 48px;
+
+        .title {
+            font-size: 48px;
+            color: $primary-500;
+            line-height: 80px;
+            font-weight: 700;
+        }
+
+        .titleInfo {
+            font-size: 16px;
+            line-height: 21px;
+            color: $gray-500;
+        }
+    }
+
+    footer {
+        .title {
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 36px;
+            color: $primary-500;
+            margin-bottom: 16px;
+        }
+
+        .grid {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.image {
+    width: 1252px;
+    height: 668px;
+    border-radius: 4px;
+    margin-bottom: 32px;
+}

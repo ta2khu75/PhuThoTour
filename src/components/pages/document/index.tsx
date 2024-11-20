@@ -5,7 +5,7 @@ import bottom from "../../../asset/bottom.svg"
 import TableDocument from "../../element/tableDocument"
 const DocumentPage = () => {
     return (
-        <>
+        <div>
             <div className={style.title}>
                 <TitleElement title="Tài liệu" />
             </div>
@@ -29,7 +29,7 @@ const DocumentPage = () => {
             <div id="table" className={style.tableData}>
                 <TableDocument />
             </div>
-        </>
+        </div>
     )
 }
 

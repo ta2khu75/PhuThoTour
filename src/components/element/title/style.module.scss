@@ -1,0 +1,28 @@
+@import "../../../variable";
+
+.hexagon {
+    margin-top: 48px;
+    margin-bottom: 48px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    width: 378px;
+    height: 98px;
+    color: $primary-500;
+    font-size: 40px;
+    text-align: center;
+    line-height: 98px;
+    font-weight: bold;
+    clip-path: polygon(10% 0%,
+            /* Góc trên trái */
+            90% 0%,
+            /* Góc trên phải */
+            100% 50%,
+            /* Góc phải */
+            90% 100%,
+            /* Góc dưới phải */
+            10% 100%,
+            /* Góc dưới trái */
+            0% 50%
+            /* Góc trái */
+        );
+}

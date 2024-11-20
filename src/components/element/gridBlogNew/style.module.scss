@@ -1,0 +1,71 @@
+@import "../../../variable";
+
+.container {
+    background-color: rgba(78, 149, 219, 0.7);
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 68px;
+
+    .logo {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 0;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 16px;
+        margin-bottom: 37px;
+
+        .hr {
+            background-color: $primary-600;
+            width: 130px;
+            height: 6px;
+            border-radius: 100px;
+        }
+
+        .title {
+            color: $primary-600;
+            font-size: 44px;
+            line-height: 49.28px;
+            font-weight: 700;
+        }
+
+        .subTitle {
+            font-size: 20px;
+            line-height: 23.44px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .textDescription {
+            color: white;
+            font-size: 20px;
+            line-height: 23.44px;
+        }
+
+    }
+
+    .grid {
+        display: flex;
+        z-index: 1;
+        justify-content: center;
+        column-gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .button {
+        padding: 0px 28px;
+        border-radius: 6px;
+        border: none;
+        height: 44px;
+        background-color: $primary-500;
+        font-weight: 600;
+        color: white;
+        font-size: 18px;
+        line-height: 21.09px;
+    }
+}

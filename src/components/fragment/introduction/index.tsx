@@ -3,7 +3,6 @@ import style from "./style.module.css"
 const Introduction = () => {
     return (
         <div className={style.introduction} style={{ backgroundImage: `url(${bg})` }} >
-
         </div>
     )
 }

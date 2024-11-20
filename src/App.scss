@@ -10,7 +10,18 @@
   justify-content: space-between;
 }
 
+.content-end {
+  justify-content: end;
+}
+
 .items-center {
   align-items: center;
 }
 
+.grid {
+  display: grid;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}

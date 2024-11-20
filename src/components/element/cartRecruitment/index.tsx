@@ -1,6 +1,11 @@
 import style from "./style.module.scss"
 import logo from "../../../asset/logoRecruitment.png"
+import { useNavigate } from "react-router-dom"
 const CartRecruitment = () => {
+    const navigate = useNavigate()
+    const handleClick = () => {
+        navigate("/recruitment/details")
+    }
     return (
         <div className={style.cart}>
             <div className={style.cartHeader}>
@@ -21,7 +26,7 @@ const CartRecruitment = () => {
                 <div>Mô tả công việc:</div>
                 <p>Trung tâm dịch vụ du lịch Đầm Sen cần tuyển 2 Nhân viên kinh doanh lữ hành. Yêu cầu: Tốt nghiệp CĐ, ĐH chuyên ngành Du lich, QT kinh doanh, Marketing. Am hiểu tâm lý ...</p>
             </div>
-            <button className={style.cartButton}>Xem chi tiết</button>
+            <button onClick={handleClick} className={style.cartButton}>Xem chi tiết</button>
         </div>
     )
 }

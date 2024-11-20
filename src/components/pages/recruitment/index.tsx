@@ -4,7 +4,7 @@ import TitleElement from "../../element/title";
 import style from "./style.module.scss"
 const RecruitmentPage = () => {
     return (
-        <>
+        <div className={style.container}>
             <div className={style.title}>
                 <TitleElement title="Tuyển dụng" />
             </div>
@@ -12,17 +12,7 @@ const RecruitmentPage = () => {
                 <AsideRecruitment />
                 <GridRecruitment />
             </div>
-            {/* <div className={style.mainContentContainer}>
-                <div className={style.mainContent}>
-                    <CartBlogLargeElement />
-                </div>
-                <AsideBlog />
-            </div>
-            <div className="flex content-between">
-                <AsideTopic />
-                <GridBlog />
-            </div> */}
-        </>
+        </div>
     )
 }
 

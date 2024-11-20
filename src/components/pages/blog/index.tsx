@@ -6,7 +6,7 @@ import TitleElement from "../../element/title"
 import style from "./style.module.scss"
 const BlogPage = () => {
     return (
-        <>
+        <div className={style.container}>
             <div className={style.title}>
                 <TitleElement title="Bài viết" />
             </div>
@@ -20,7 +20,7 @@ const BlogPage = () => {
                 <AsideTopic />
                 <GridBlog />
             </div>
-        </>
+        </div>
     )
 }
 

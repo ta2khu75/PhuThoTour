@@ -9,9 +9,7 @@ function App() {
     <>
       <Navigation />
       <div className={style.bg} style={{ backgroundImage: `url(${bg})` }}>
-        <div className={style.container}>
           <Outlet />
-        </div>
       </div>
       <Footer />
     </>

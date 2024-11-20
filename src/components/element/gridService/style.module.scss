@@ -1,0 +1,51 @@
+@import "../../../variable";
+
+.container {
+    background-color: #D4D4D4;
+    padding-top: 40px;
+    padding-bottom: 68px;
+    margin-bottom: 257px;
+    border-radius: 0px 0px 24px 24px;
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 16px;
+        margin-bottom: 37px;
+
+        .hr {
+            background-color: $primary-600;
+            width: 220px;
+            height: 6px;
+            border-radius: 100px;
+        }
+
+        .title {
+            color: $primary-600;
+            font-size: 44px;
+            line-height: 49.28px;
+            font-weight: 700;
+        }
+
+        .subTitle {
+            font-size: 20px;
+            line-height: 23.44px;
+            font-weight: 600;
+            color: $gray-600;
+        }
+
+        .textDescription {
+            color: $gray-600;
+            font-size: 20px;
+            line-height: 23.44px;
+        }
+
+    }
+
+    .grid {
+        display: flex;
+        justify-content: center;
+        column-gap: 24px;
+        margin-bottom: 40px;
+    }
+}

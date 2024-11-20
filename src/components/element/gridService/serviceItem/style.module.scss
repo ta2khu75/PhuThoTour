@@ -1,0 +1,32 @@
+@import "../../../../variable";
+
+.item {
+    width: 362px;
+    height: 356px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.image {
+    border-radius: 12px 12px 0px 0px;
+    width: 362px;
+    height: 197px;
+}
+
+.textContainer {
+    padding: 24px 16px 32px 16px;
+    text-align: center;
+    .title {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23.44px;
+        color: $primary-500;
+
+    }
+
+    .description {
+        font-size: 16px;
+        line-height: 21px;
+        color: $gray-500;
+    }
+}
