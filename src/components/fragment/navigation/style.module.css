@@ -8,15 +8,19 @@
     border-bottom: 1px solid white;
 }
 
-.nav-item {
+.navItem {
     color: white;
     font-size: 20px;
+    font-weight: 700;
     line-height: 22.4px;
     text-decoration: none;
 }
 
-.nav-item .active {
+.navItem.active {
     color: #99FFFF;
+    /* text-decoration: underline; */
+    line-height: 36px;
+    border-bottom: 1px solid #99FFFF;
 }
 
 .logo {
@@ -26,6 +30,6 @@
     margin-right: 80px;
 }
 
-.nav-item+.nav-item {
+.navItem+.navItem {
     margin-left: 80px;
 }

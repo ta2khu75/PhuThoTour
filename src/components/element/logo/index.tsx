@@ -1,4 +1,4 @@
-import logo from "../../../asset/logo.png"
+import logo from "../../../asset/header/logo.png"
 type Props = {
     height?: string;
     width?: string;

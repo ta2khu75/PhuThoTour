@@ -1,6 +1,6 @@
 import style from "./style.module.scss"
-import image from "../../../asset/imageBlog.png"
-import GridBlogItem from "../../element/gridBlog/gridBlogItem"
+import image from "../../../../asset/imageBlog.png"
+import GridBlogItem from "../../../element/gridBlog/gridBlogItem"
 const BlogDetailsPage = () => {
   return (
     <div className={style.container}>
@@ -12,10 +12,10 @@ const BlogDetailsPage = () => {
       <footer>
         <div className={style.title}>Bài viết liên quan</div>
         <div className={style.grid}>
-          <GridBlogItem/>
-          <GridBlogItem/>
-          <GridBlogItem/>
-          <GridBlogItem/>
+          <GridBlogItem />
+          <GridBlogItem />
+          <GridBlogItem />
+          <GridBlogItem />
         </div>
       </footer>
     </div>

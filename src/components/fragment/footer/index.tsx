@@ -1,5 +1,9 @@
 import LogoElement from "../../element/logo"
 import style from "./style.module.css"
+import iconLocation from "../../../asset/footer/location.svg"
+import iconPhone from "../../../asset/footer/phone.svg"
+import iconEmail from "../../../asset/footer/mail.svg"
+import iconFacebook from "../../../asset/footer/facebook.svg"
 const Footer = () => {
     return (
         <div className={style.footer}>
@@ -16,19 +20,19 @@ const Footer = () => {
                 </div>
                 <div>
                     <div className={style.footerTitle}>LIÊN HỆ</div>
-                    <ul>
-                        <li>15 Đường số 2, Cư xá Lữ Gia,
-                            Phường 15, Quận 11, TP. HCM </li>
-                        <li>02838650921</li>
-                        <li>vanphong@damsenpark.vn</li>
-                        <li>Phuthotourist</li>
+                    <ul className={style.ulMiddle}>
+                        <li><img src={iconLocation} /><span>15 Đường số 2, Cư xá Lữ Gia,
+                            Phường 15, Quận 11, TP. HCM </span></li>
+                        <li><img src={iconPhone} /><span>02838650921</span></li>
+                        <li><img src={iconEmail} /><span>vanphong@damsenpark.vn</span></li>
+                        <li><img src={iconFacebook} /><span>Phuthotourist</span></li>
                     </ul>
                 </div>
                 <div>
                     <div className={style.footerTitle}>
                         CÁC ĐƠN VỊ CÙNG HỆ THỐNG PHUTHOTOURIST
                     </div>
-                    <ul>
+                    <ul className={style.ulEnd}>
                         <li>Công viên Văn hóa Đầm Sen</li>
                         <li>Khu du lịch sinh thái Vàm Sát</li>
                         <li>Khách sạn Ngọc Lan (Quận 1)</li>
@@ -37,12 +41,6 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
-            {/* <div>
-
-            </div>
-            <div>
-
-            </div> */}
         </div>
     )
 }

@@ -8,7 +8,7 @@ const HomePage = () => {
     return (
         <div className={style.containerFluid}>
             <Introduction />
-            <div >
+            <div className={style.content}>
                 <div className={style.container}>
                     <Intro />
                     <About />

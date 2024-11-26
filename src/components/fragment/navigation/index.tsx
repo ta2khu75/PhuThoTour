@@ -1,20 +1,22 @@
-import { Link } from "react-router-dom"
-import m from "./style.module.css"
+import { Link, useLocation } from "react-router-dom"
+import style from "./style.module.css"
 import LogoElement from "../../element/logo"
+import clsx from "clsx"
 const Navigation = () => {
+  const { pathname } = useLocation()
   return (
-    <div className={m["nav"]}>
-      <Link className={m["nav-item"]} to={"/"}>
+    <div className={clsx(style.nav)}>
+      <Link className={clsx(style.navItem, { [style.active]: pathname === "/" })} to={"/"}>
         Trang chủ
       </Link >
-      <Link className={m["nav-item"]} to={"/blog"}>
+      <Link className={clsx(style.navItem, { [style.active]: pathname === "/blog" })} to={"/blog"}>
         Bài viết
       </Link >
-      <LogoElement className={m.logo} />
-      <Link className={m["nav-item"]} to={"/document"}>
+      <LogoElement className={style.logo} />
+      <Link className={clsx(style.navItem, { [style.active]: pathname === "/document" })} to={"/document"}>
         Tài liệu
       </Link >
-      <Link className={m["nav-item"]} to={"/recruitment"}>
+      <Link className={clsx(style.navItem, { [style.active]: pathname === "/recruitment" })} to={"/recruitment"}>
         Tuyển dụng
       </Link >
     </div>

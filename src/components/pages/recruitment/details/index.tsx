@@ -1,8 +1,8 @@
 import style from "./style.module.scss"
-import imageLogo from "../../../asset/logoRecruitment.png"
-import imageContent from "../../../asset/imageBlog.png"
-import imgPin from "../../../asset/pin.svg"
-import imgVn from "../../../asset/vn.png"
+import imageLogo from "../../../../asset/logoRecruitment.png"
+import imageContent from "../../../../asset/imageBlog.png"
+import imgPin from "../../../../asset/pin.svg"
+import imgVn from "../../../../asset/vn.png"
 import { Form, Input, Radio } from "antd"
 const RecruitmentDetailsPage = () => {
     return (

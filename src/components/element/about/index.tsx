@@ -1,5 +1,7 @@
 import AboutImage from "./img"
 import style from "./style.module.scss"
+import about1 from "../../../asset/content/about/about1.png"
+import about2 from "../../../asset/content/about/about2.png"
 const About = () => {
     return (
         <div className={style.container}>
@@ -43,8 +45,8 @@ const About = () => {
                 </article>
                 <button>Xem chi tiết</button>
             </div>
-            <AboutImage zIndex={1} width="487px" height="311px" right="213px" top="46px" />
-            <AboutImage zIndex={2} width="552px" height="340px" right="81px" top="305px" />
+            <AboutImage image={about1} zIndex={1} width="487px" height="311px" right="213px" top="46px" />
+            <AboutImage image={about2} zIndex={2} width="552px" height="340px" right="81px" top="305px" />
         </div>
     )
 }

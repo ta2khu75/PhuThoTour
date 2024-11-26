@@ -1,0 +1,23 @@
+@import "../../../variable";
+
+.introduction {
+    height: 960px;
+    width: 100%;
+    position: relative;
+    opacity: 0.9;
+    background-color: $primary-500;
+}
+
+.bottom {
+    position: absolute;
+    left: 50%;
+    top: 884px;
+}
+
+.logo {
+    position: absolute;
+    top: 322.39px;
+    right: 547.32px;
+    width: 307.49px;
+    height: 195.23px;
+}
