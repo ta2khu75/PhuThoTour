@@ -11,7 +11,19 @@ import document5 from "../../../asset/content/page/document/document5.jpeg"
 import document6 from "../../../asset/content/page/document/document6.jpeg"
 import document7 from "../../../asset/content/page/document/document7.jpeg"
 import document8 from "../../../asset/content/page/document/document8.jpeg"
+import { useEffect, useState } from "react"
+import FirebaseUtil from "../../../util/firebaseUtil"
+import { TypeEnum } from "../../../types/TypeEnum"
 const DocumentPage = () => {
+    const [documentList, setDocumentList] = useState<Documentt[]>([])
+    useEffect(() => {
+        getDocumentList()
+    })
+    const getDocumentList = () => {
+        FirebaseUtil.readAll<Documentt>(TypeEnum.DOCUMENT).then(data => {
+            setDocumentList(data)
+        })
+    }
     return (
         <div>
             <div className={style.title}>
@@ -35,7 +47,7 @@ const DocumentPage = () => {
                 </a>
             </div>
             <div id="table" className={style.tableData}>
-                <TableDocument />
+                <TableDocument documentList={documentList} />
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ const SearchBlog = () => {
     return (
         <div className={style.search}>
             <div>
-                <Input.Search />
+                <Input.Search placeholder="Tìm kiếm" />
             </div>
             <div className="flex items-center">
                 <DatePicker.RangePicker />

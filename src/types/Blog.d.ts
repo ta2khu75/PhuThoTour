@@ -1,9 +1,12 @@
-interface Blog {
-    title: string;
-    topicIds: string[];
-    createdDate: Date;
-    imageUrl?: string;
-    documentUrl?: string;
-    content: string;
-    accountId: string;
-}
+// import { Timestamp } from "firebase/firestore";
+
+// interface Blog {
+//     title: string;
+//     topicIds: string[];
+//     createdDate: Date | Timestamp;
+//     imageUrl?: string;
+//     documentUrl?: string;
+//     view: number;
+//     content: string;
+//     accountId: string;
+// }

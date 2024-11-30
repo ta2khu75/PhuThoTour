@@ -1,19 +1,20 @@
 import AsideItemTopic from "./asideItemTopic"
 import style from "./style.module.scss"
 import logoBlur from "../../../asset/logoBlur.png"
-const AsideTopic = () => {
+type Props = {
+    topicList: Topic[]
+    topicId?: string;
+    setTopicId: React.Dispatch<React.SetStateAction<string | undefined>>
+}
+const AsideTopic = ({ topicList, topicId, setTopicId }: Props) => {
     return (
         <div className={style.aside}>
             <div className={style.asideTitle}>Chủ đề bài viết</div>
             <div className={style.asideContent}>
-                <AsideItemTopic title="Giới thiệu" active />
-                <AsideItemTopic title="Giới thiệu" />
-                <AsideItemTopic title="Giới thiệu" />
-                <AsideItemTopic title="Giới thiệu" />
-                <AsideItemTopic title="Giới thiệu" />
-                <AsideItemTopic title="Giới thiệu" />
+                {topicList?.map((topic, index) => <AsideItemTopic key={index} title={topic.name} active={topicId == topic.id} onClick={() => setTopicId(topic.id)} />)
+                }
             </div>
-            <img src={logoBlur} className={style.asideLogo} alt="image blur"/>
+            <img src={logoBlur} className={style.asideLogo} alt="image blur" />
         </div>
     )
 }

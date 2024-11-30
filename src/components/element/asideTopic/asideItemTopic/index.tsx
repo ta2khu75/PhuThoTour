@@ -2,11 +2,12 @@ import style from "./style.module.scss"
 type Props = {
     title: string;
     className?: string;
-    active?: boolean
+    active?: boolean;
+    onClick: () => void
 }
-const AsideItemTopic = ({ title, className, active = false }: Props) => {
+const AsideItemTopic = ({ title, className, active = false, onClick }: Props) => {
     return (
-        <div className={`${style.item} ${className} ${active ? style.active : ""}`}>
+        <div className={`${style.item} ${className} ${active ? style.active : ""}`} onClick={onClick}>
             {title}
         </div>
     )

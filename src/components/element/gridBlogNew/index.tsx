@@ -12,9 +12,9 @@ const GridBlogNew = () => {
                 <div className={style.textDescription}>Hãy cùng chúng tôi chia sẻ những bài viết mới với các thông tin về những sản phẩm du lịch</div>
             </div>
             <div className={style.grid}>
-                <GridBlogItem itemWidth="362px" width="362px" showDescription height="197px" />
-                <GridBlogItem itemWidth="362px" width="362px" showDescription height="197px" />
-                <GridBlogItem itemWidth="362px" width="362px" showDescription height="197px" />
+                {/* <GridBlogItem itemWidth="362px" width="362px" showDescription height="197px" /> */}
+                {/* <GridBlogItem itemWidth="362px" width="362px" showDescription height="197px" /> */}
+                {/* <GridBlogItem itemWidth="362px" width="362px" showDescription height="197px" /> */}
             </div>
             <div className="flex content-center">
                 <button className={style.button}>Xem thêm bài viết</button>

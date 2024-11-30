@@ -2,7 +2,10 @@ import { Pagination } from "antd"
 import GridBlogItem from "./gridBlogItem"
 import SearchBlog from "./searchBlog"
 import style from "./style.module.scss"
-const GridBlog = () => {
+type Props = {
+    blogList: Blog[]
+}
+const GridBlog = ({ blogList }: Props) => {
     return (
         <div className={style.container}>
             <div className={style.search}>
@@ -10,21 +13,12 @@ const GridBlog = () => {
             </div>
             <div>
                 <div className={style.listBlog} >
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
-                    <GridBlogItem />
+                    {blogList.map((blog, index) =>
+                        <GridBlogItem key={index} blog={blog} />
+                    )}
                 </div>
                 <div className={style.paginationBlog}>
-                    <Pagination align="center" defaultCurrent={1} total={50} />
+                    <Pagination align="center" defaultCurrent={1} total={blogList.length} />
                 </div>
             </div>
         </div>

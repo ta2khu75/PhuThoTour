@@ -5,6 +5,7 @@
     row-gap: 0px;
     background-color: white;
     border-radius: 8px;
+    text-decoration: none;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -20,7 +21,6 @@
 
 .itemTitle {
     color: $primary-500;
-    text-decoration: none;
     font-size: 16px;
     font-weight: bold;
     line-height: 18.75px;
@@ -38,4 +38,8 @@
     font-size: 14px;
     line-height: 16.41px;
     font-weight: 400;
+}
+
+.containerTag {
+    display: inline-block;
 }

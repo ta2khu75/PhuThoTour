@@ -2,34 +2,39 @@ import { Link } from "react-router-dom"
 import image from "../../../../asset/imageBlog.png"
 import style from "./style.module.scss"
 import TagBlog from "./tagBlog"
+import dayjs from "dayjs";
+import { Timestamp } from "firebase/firestore";
+import { FunctionUtil } from "../../../../util/FunctionUtil";
+// import { Blog } from "../../../../types/Blog";
 type Props = {
+  blog: Blog;
   showDescription?: boolean,
   width?: string,
   height?: string
   itemWidth?: string
 }
-const GridBlogItem = ({ showDescription = false, itemWidth = "265px", width = "265px", height = "146px" }: Props) => {
+const GridBlogItem = ({ blog, showDescription = false, itemWidth = "265px", width = "265px", height = "146px" }: Props) => {
   return (
-    <div className={style.item} style={{ width: itemWidth }}>
-      <img src={image} className={style.itemImage} style={{ width, height }} alt="Blog Image" />
+    <Link to={`/blog/details/${blog.id}`} className={style.item} style={{ width: itemWidth }}>
+      <img src={blog.imageUrl} className={style.itemImage} style={{ width, height }} alt="Blog Image" />
       <div className={style.itemText}>
         <div className={style.itemTextDescription}>Admin</div>
-        <Link to={"/blog/details"} className={style.itemTitle}>Thông báo: đấu giá giữ xe tại CVHH Đầm Sen</Link>
+        <div className={style.itemTitle}>{blog?.title}</div>
         {showDescription &&
           <div className={style.description}>
             Công ty Cổ phần Dịch vụ Du lịch Phú Thọ thông báo đến các nhà thầu tham gia chào hàng cạnh tranh Gói thầu: Cung cấp, lắp đặt 02 màn...
           </div>
         }
-        <div className="flex">
-          <TagBlog />
-          <TagBlog />
-          <TagBlog />
+        <div className={style.containerTag}>
+          {blog.topicIds.map((topicId, index) =>
+            <TagBlog key={index} name={topicId} />
+          )}
         </div>
         <div className={style.itemTextDescription}>
-          10N lượt xem * 20/02/2022
+          10N lượt xem * {FunctionUtil.convertCreatedDateToString(blog.createdDate)}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

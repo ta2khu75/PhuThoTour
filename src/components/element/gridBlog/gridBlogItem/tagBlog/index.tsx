@@ -1,7 +1,10 @@
 import style from "./style.module.scss"
-const TagBlog = () => {
+type Props = {
+    name: string
+}
+const TagBlog = ({ name }: Props) => {
     return (
-        <div className={style.tag}>index</div>
+        <div className={style.tag}>{name}</div>
     )
 }
 

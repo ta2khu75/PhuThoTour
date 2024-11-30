@@ -2,7 +2,11 @@ import { Input, Pagination } from "antd"
 import SearchDocument from "./searchDocument"
 import style from "./style.module.scss"
 import download from "../../../asset/download.svg"
-const TableDocument = () => {
+import { FunctionUtil } from "../../../util/FunctionUtil"
+type Props = {
+    documentList: Documentt[]
+}
+const TableDocument = ({ documentList }: Props) => {
     return (
         <div className={style.grid}>
             <div className={style.search}>
@@ -18,73 +22,21 @@ const TableDocument = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
-                    <tr>
-                        <td className={style.start}>1</td>
-                        <td>Khám phá Hội An - Việt Nam</td>
-                        <td>03/03/12 22:43 </td>
-                        <td className={style.end}><img src={download} alt="download" /></td>
-                    </tr>
+                    {documentList.map((document, index) => (
+                        <tr key={index}>
+                            <td className={style.start}>{index + 1}</td>
+                            <td>{document.title}</td>
+                            <td>{FunctionUtil.convertCreatedDateToStringHour(document.createdDate)}</td>
+                            <td className={style.end}><a target="_blank" href={document.fileUrl}><img src={download} alt="download" /></a></td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
             <div className="flex items-center content-between">
                 <div className="flex"><span>Hiển thị </span><input value={10} style={{ width: "36px" }} /> <span>câu trả lời trong mỗi trang</span></div>
-                <Pagination defaultCurrent={1} total={50} />
+                <Pagination defaultCurrent={1} total={documentList.length} />
             </div>
-        </div>
+        </div >
     )
 }
 
