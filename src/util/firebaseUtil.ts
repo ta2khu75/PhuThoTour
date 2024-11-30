@@ -1,7 +1,9 @@
 import { addDoc, collection, deleteDoc, doc, getCountFromServer, getDoc, getDocs, query, QueryConstraint, updateDoc } from "firebase/firestore";
-import { getDownloadURL, StorageReference, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { TypeEnum } from "../types/TypeEnum";
-import { db } from "../config/FirebaseConfig";
+import { db, storage } from "../config/FirebaseConfig";
+import { FirebaseError } from "firebase/app";
+// import { db, storage } from "../config/FirebaseConfig";
 
 export default class FirebaseUtil {
     static async create<T extends object>(typeEnum: TypeEnum, data: T): Promise<T> {
@@ -15,13 +17,17 @@ export default class FirebaseUtil {
             throw err
         }
     }
-    static async uploadFile(storageRef: StorageReference, file: File) {
+    static async uploadFile(fileName: string, file: File): Promise<string> {
+        const storageRef = ref(storage, `PhuThoTour/${fileName}`);
         try {
             await uploadBytes(storageRef, file)
-            const downloadURL = await getDownloadURL(storageRef);
-            return downloadURL;
+            return await getDownloadURL(storageRef);
+            // const downloadUrl = await getDownloadURL(storageRef);
+            // return downloadUrl;
         } catch (err) {
-            console.log(err);
+            const error = err as FirebaseError;  // Type assertion to FirebaseError
+            console.log("Upload error:", error);
+            console.log("Error payload:", error.message);
             throw err;
         }
     }

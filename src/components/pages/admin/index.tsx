@@ -1,6 +1,12 @@
+import { Outlet } from "react-router-dom"
+import Aside from "../../fragment/aside"
+import style from "./style.module.scss"
 const AdminPage = () => {
     return (
-        <div>AdminPage</div>
+        <div className={style.container}>
+            <Aside />
+            <Outlet />
+        </div>
     )
 }
 

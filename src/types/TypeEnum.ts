@@ -3,6 +3,9 @@ export enum TypeEnum {
     DOCUMENT = "documents",
     BLOG = "blogs",
     RECRUITMENT = "recruitments",
-    APPLY = "applies"
-
+    APPLY = "applies",
+    TOPIC = "topics",
+    FORM_OF_WORK = "form_of_works",
+    FIELD = "fields",
+    WORKPLACE = "workplaces",
 }
