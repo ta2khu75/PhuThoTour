@@ -11,8 +11,8 @@
     border-radius: 999px;
 }
 
-.tag .active {
+.tag.active {
     background-color: $primary-500;
     font-weight: 600;
-    columns: #ffffff;
+    color: white;
 }

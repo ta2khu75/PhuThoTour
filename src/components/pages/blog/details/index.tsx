@@ -22,7 +22,7 @@ const BlogDetailsPage = () => {
         <div className={style.title}>{blog?.title}</div>
         <div className={style.titleInfo}>by tuyendung in on {FunctionUtil.convertCreateDateToStringVn(blog?.createdDate)}</div>
       </header>
-      <img src={image} alt="image blog" className={style.image} />
+      <img src={blog?.imageUrl} alt="image blog" className={style.image} />
       <footer>
         <div className={style.title}>Bài viết liên quan</div>
         <div className={style.grid}>

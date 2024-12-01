@@ -2,7 +2,7 @@ import clsx from "clsx";
 import style from "./style.module.scss"
 type Props = {
     title: string;
-    active?: boolean
+    active?: boolean;
 }
 const TagRecruitment = ({ title, active = false }: Props) => {
     return (
