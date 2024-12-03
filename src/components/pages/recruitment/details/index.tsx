@@ -4,33 +4,68 @@ import imageContent from "../../../../asset/imageBlog.png"
 import imgPin from "../../../../asset/pin.svg"
 import imgVn from "../../../../asset/vn.png"
 import { Form, Input, Radio } from "antd"
+import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import FirebaseUtil from "../../../../util/firebaseUtil"
+import { TypeEnum } from "../../../../types/TypeEnum"
+import iconLocation from "../../../../asset/icon/location.svg"
+import iconOclock from "../../../../asset/icon/oclock.svg"
+import clsx from "clsx"
+import FormApply from "./form"
 const RecruitmentDetailsPage = () => {
+    const { id } = useParams()
+    const [recruitment, setRecruitment] = useState<Recruitment>()
+    const [formOfWork, setFormOfWork] = useState<FormOfWork>()
+    const [workplace, setWorkplace] = useState<Workplace>()
+    useEffect(() => {
+        getRecruitment()
+    }, [id])
+    useEffect(() => {
+        if (recruitment) {
+            getMoreInfo(recruitment.workplaceId, recruitment.formOfWorkId)
+        }
+    }, [recruitment])
+    const getMoreInfo = (workplaceId: string, formOfWorkId: string) => {
+        FirebaseUtil.readById<FormOfWork>(TypeEnum.FORM_OF_WORK, formOfWorkId).then(setFormOfWork)
+        FirebaseUtil.readById<Workplace>(TypeEnum.WORKPLACE, workplaceId).then(setWorkplace)
+    }
+    const getRecruitment = () => {
+        if (id) {
+            FirebaseUtil.readById<Recruitment>(TypeEnum.RECRUITMENT, id).then(setRecruitment)
+        }
+    }
     return (
         <div className={style.container}>
             <header className="flex content-between">
-                <div className="flex items-center">
+                <div className="flex items-center" style={{ flexGrow: 1 }}>
                     <img src={imageLogo} alt="logo cty" />
                     <div className={style.text}>
                         <div className={style.title}>
-                            Nhân viên thiết kế đồ họa
+                            {recruitment?.title}
                         </div>
                         <div className={style.subTitle}>
-                            Nhân viên chính thức
+                            {formOfWork?.name}
                         </div>
-                        <div className={style.address}>
-                            <span>
-                                CVVH Đầm Sen
+                        <div className={style.info}>
+                            <span className={style.infoElement}>
+                                <img src={iconLocation} alt="" />
+                                <span>
+                                    {workplace?.name}
+                                </span>
                             </span>
-                            <span>
-                                2 tuần trước
+                            <span className={style.infoElement}>
+                                <img src={iconOclock} alt="" />
+                                <span>
+                                    2 tuần trước
+                                </span>
                             </span>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div className={style.status}>Đang tuyển</div>
+                    <div className={clsx(style.status, { [style.true]: recruitment?.status, [style.false]: !recruitment?.status })}>{recruitment?.status ? "Đang tuyển" : "Đã hết hạn"}</div>
                 </div>
-            </header>
+            </header >
             <article>
                 <header>
                     <img src={imageContent} alt="" />
@@ -39,29 +74,20 @@ const RecruitmentDetailsPage = () => {
             <main>
                 <div className={style.titleContent}>Chi tiết tin tuyển dụng</div>
                 <table>
-                    <tr>
-                        <td>Vị trí</td>
-                        <td>Nhân viên thiết kế đồ họa</td>
-                    </tr>
-                    <tr>
-                        <td>Vị trí</td>
-                        <td>Nhân viên thiết kế đồ họa</td>
-                    </tr>
-                    <tr>
-                        <td>Vị trí</td>
-                        <td>Nhân viên thiết kế đồ họa</td>
-                    </tr>
-                    <tr>
-                        <td>Vị trí</td>
-                        <td>Nhân viên thiết kế đồ họa</td>
-                    </tr>
+                    {recruitment?.details.map((item, index) =>
+                        <tr key={index}>
+                            <td>{item.title}</td>
+                            <td dangerouslySetInnerHTML={{ __html: item.value }}></td>
+                        </tr>
+                    )}
                 </table>
             </main>
             <section>
                 <div className={style.titleContent}>
                     Ứng tuyển Online
                 </div>
-                <Form layout="vertical" className={style.form}>
+                <FormApply />
+                {/* <Form layout="vertical" className={style.form}>
                     <div className={style.formItem}>
                         <Form.Item label="Họ tên">
                             <Input className={style.input} placeholder="Nguyễn Văn A" />
@@ -126,9 +152,9 @@ const RecruitmentDetailsPage = () => {
                     <div className="flex content-end">
                         <div className={"flex content-center "}><button className={style.submit}>Gửi ngay</button></div>
                     </div>
-                </Form>
+                </Form> */}
             </section>
-        </div>
+        </div >
     )
 }
 

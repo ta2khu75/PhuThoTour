@@ -11,7 +11,7 @@ const LoginPage = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const onFinish = (value: { email: string, password: string }) => {
-        FirebaseUtil.queryData<Account>(TypeEnum.ACCOUNT, where("username", "==", value.email), limit(1)).then(response => {
+        FirebaseUtil.queryData<Account>(TypeEnum.ACCOUNT, where("email", "==", value.email), limit(1)).then(response => {
             if (response.length > 0 && response[0].password == value.password) {
                 dispatch(authAction.set(response[0]))
                 navigate("/admin")
@@ -24,7 +24,7 @@ const LoginPage = () => {
         <div className={style.container}>
             <h2>Login</h2>
             <Form className={style.form} onFinish={onFinish} layout="vertical">
-                <Form.Item label={"Email"} name={"email"} rules={[{ required: true }]}>
+                <Form.Item label={"Email"} name={"email"} rules={[{ required: true }, { type: "email" }]}>
                     <Input placeholder="Email" />
                 </Form.Item>
                 <Form.Item label={"Mật khẩu"} name={"password"} rules={[{ required: true }]}>

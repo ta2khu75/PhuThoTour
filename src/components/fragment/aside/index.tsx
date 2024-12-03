@@ -14,7 +14,7 @@ const items: MenuItem[] = [
     },
     {
         key: 'topic',
-        label: 'Bài viết',
+        label: 'Chủ đề',
         icon: <MailOutlined />,
     },
     {

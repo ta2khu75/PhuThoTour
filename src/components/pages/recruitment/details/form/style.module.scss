@@ -1,0 +1,33 @@
+@import "../../../../../variable";
+
+.form {
+    width: 954px;
+}
+
+.formItem {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 80px;
+}
+
+.input {
+    border: none;
+}
+
+.iconVn {
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.submit {
+    background-color: $primary-500;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21.08px;
+    height: 44px;
+    padding: 0px 28px;
+}

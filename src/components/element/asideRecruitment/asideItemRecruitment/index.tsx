@@ -13,16 +13,11 @@ const AsideItemRecruitment = ({ list, id, title, handleClick }: Props) => {
             <div className={style.title}>{title}</div>
             {
                 list.map((item, index) =>
-                    <div key={index} onClick={() => handleClick(item.id)}>
+                    <div key={index} className={style.container} onClick={() => handleClick(item.id)}>
                         <TagRecruitment title={item.name} active={item.id === id} />
                     </div>
                 )
             }
-            {/* <TagRecruitment title="Kinh doanh" />
-            <TagRecruitment title="Kinh doanh" />
-            <TagRecruitment title="Kinh doanh" />
-            <TagRecruitment title="Kinh doanh" />
-            <TagRecruitment title="Kinh doanh" /> */}
         </div>
     )
 }

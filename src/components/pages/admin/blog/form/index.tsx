@@ -8,6 +8,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import style from "./style.module.scss"
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
+import { useAppSelector } from '../../../../../redux/hook'
+import { DocumentData, DocumentReference } from 'firebase/firestore'
 const BlogFormPage = () => {
   const navigate = useNavigate()
   const { id } = useParams()
@@ -38,9 +40,16 @@ const BlogFormPage = () => {
     ['clean']                                         // remove formatting button
   ];
   const modules = { toolbar: toolbarOptions }
+  const accountId = useAppSelector(state => state.auth.account?.id)
+  const [accountRef, setAccountRef] = useState<DocumentReference<DocumentData, DocumentData>>()
   useEffect(() => {
     getTopicList()
+    getAccountRef()
   }, [])
+  const getAccountRef = () => {
+    if (accountId)
+      setAccountRef(FirebaseUtil.readRefById(TypeEnum.ACCOUNT, accountId))
+  }
   useEffect(() => {
     if (id) {
       FirebaseUtil.readById<Blog>(TypeEnum.BLOG, id).then((response) => {
@@ -69,9 +78,10 @@ const BlogFormPage = () => {
     //add
     if (image && document) {
       try {
+        const topics = values.topicIds.map(topicId => FirebaseUtil.readRefById(TypeEnum.TOPIC, topicId))
         const imageUrl = await FirebaseUtil.uploadFile(`blog/image/${uuidv4()}.${image.name.split(".").pop()}`, image)
         const documentUrl = await FirebaseUtil.uploadFile(`blog/image/${uuidv4()}.${document.name.split(".").pop()}`, document)
-        await FirebaseUtil.create<Blog>(TypeEnum.BLOG, { ...values, imageUrl, documentUrl, createdDate: new Date() })
+        await FirebaseUtil.create<Blog>(TypeEnum.BLOG, { ...values, imageUrl, documentUrl, createdDate: new Date(), views: 0, account: accountRef, accountId, topics })
         handleSuccess()
       } catch (error) {
         Notify.error("create Blog error: " + error)

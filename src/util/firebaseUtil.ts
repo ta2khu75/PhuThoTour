@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getCountFromServer, getDoc, getDocs, query, QueryConstraint, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, DocumentData, DocumentReference, getCountFromServer, getDoc, getDocs, query, QueryConstraint, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { TypeEnum } from "../types/TypeEnum";
 import { db, storage } from "../config/FirebaseConfig";
@@ -6,6 +6,13 @@ import { FirebaseError } from "firebase/app";
 // import { db, storage } from "../config/FirebaseConfig";
 
 export default class FirebaseUtil {
+    static readRefById(typeEnum: TypeEnum, id: string): DocumentReference<DocumentData, DocumentData> {
+        return doc(db, typeEnum, id)
+    }
+    static async readByDocumentRef<T>(doc: DocumentReference): Promise<T | undefined> {
+        const docSnap = await getDoc(doc);
+        return { ...docSnap.data(), id: docSnap.id } as T & { id: string };
+    }
     static async create<T extends object>(typeEnum: TypeEnum, data: T): Promise<T> {
         try {
             const collectionRef = collection(db, typeEnum);
@@ -22,8 +29,6 @@ export default class FirebaseUtil {
         try {
             await uploadBytes(storageRef, file)
             return await getDownloadURL(storageRef);
-            // const downloadUrl = await getDownloadURL(storageRef);
-            // return downloadUrl;
         } catch (err) {
             const error = err as FirebaseError;  // Type assertion to FirebaseError
             console.log("Upload error:", error);

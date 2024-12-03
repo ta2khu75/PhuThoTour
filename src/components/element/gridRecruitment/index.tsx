@@ -1,11 +1,16 @@
 import { Pagination } from "antd"
 import CartRecruitment from "../cartRecruitment"
 import style from "./style.module.scss"
-const GridRecruitment = () => {
+type Props = {
+    recruitmentList: Recruitment[],
+    asideMap: Map<string, string>
+}
+const GridRecruitment = ({ recruitmentList, asideMap }: Props) => {
     return (
         <div>
-
             <div className={style.grid}>
+                {recruitmentList.map((recruitment, index) => <CartRecruitment asideMap={asideMap} key={index} recruitment={recruitment} />)}
+                {/*
                 <CartRecruitment />
                 <CartRecruitment />
                 <CartRecruitment />
@@ -15,9 +20,10 @@ const GridRecruitment = () => {
                 <CartRecruitment />
                 <CartRecruitment />
                 <CartRecruitment />
+                */}
             </div>
             <div className={style.pagination}>
-                <Pagination align="center" defaultCurrent={1} total={50} />
+                <Pagination align="center" defaultCurrent={1} total={recruitmentList.length} />
             </div>
         </div>
     )

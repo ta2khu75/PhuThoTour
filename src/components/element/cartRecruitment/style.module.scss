@@ -13,27 +13,40 @@
 .cartHeader {
     display: flex;
     align-items: start;
-    .textHeader{
+
+    .textHeader {
         flex-grow: 1;
     }
-    .textFooter{
+
+    .textFooter {
         display: flex;
         justify-content: space-between;
         margin-bottom: 8px;
-        .address{
+
+        .address {
             color: $gray-500;
             line-height: 16.41px;
             display: grid;
             row-gap: 8px;
         }
-        .status{
+
+        .status {
             display: flex;
             align-items: center;
             padding: 8px 12px;
-            background-color: $green-50;
-            color: $green-500;
             line-height: 16.41px;
             border-radius: 46px;
+        }
+
+        .status.true {
+
+            background-color: $green-50;
+            color: $green-500;
+        }
+
+        .status.false {
+            background-color: rgba(247, 230, 230, 1);
+            color: rgba(255, 57, 57, 1);
         }
     }
 }
@@ -58,6 +71,7 @@
     height: 44px;
     margin-right: 12px;
 }
+
 .cartButton {
     background-color: $primary-500;
     color: white;
@@ -69,19 +83,32 @@
     border-radius: 6px;
     border: none;
 }
-.cartDescription{
+
+.cartDescription {
     margin-bottom: 12px;
-    div{
+
+    .titleDescription {
         font-weight: 600;
         font-size: 16px;
         line-height: 18.75px;
         color: $primary-500;
         margin-bottom: 6px;
     }
-    p{
+
+    .description {
+        display: -webkit-box;
+        /* Use a flex-like container */
+        -webkit-box-orient: vertical;
+        /* Set orientation to vertical */
+        overflow: hidden;
+        /* Hide overflow */
+        text-overflow: ellipsis;
+        /* Adds ellipsis for overflow */
+        -webkit-line-clamp: 4;
         color: $gray-500;
         margin: 0px;
         font-size: 13px;
         line-height: 17px;
+        height: 68px;
     }
 }

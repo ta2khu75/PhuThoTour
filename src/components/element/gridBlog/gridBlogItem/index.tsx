@@ -12,8 +12,9 @@ type Props = {
   width?: string,
   height?: string
   itemWidth?: string
+  topicMap: Map<string, string>
 }
-const GridBlogItem = ({ blog, showDescription = false, itemWidth = "265px", width = "265px", height = "146px" }: Props) => {
+const GridBlogItem = ({ blog, showDescription = false, topicMap, itemWidth = "265px", width = "265px", height = "146px" }: Props) => {
   return (
     <Link to={`/blog/details/${blog.id}`} className={style.item} style={{ width: itemWidth }}>
       <img src={blog.imageUrl} className={style.itemImage} style={{ width, height }} alt="Blog Image" />
@@ -27,7 +28,7 @@ const GridBlogItem = ({ blog, showDescription = false, itemWidth = "265px", widt
         }
         <div className={style.containerTag}>
           {blog.topicIds.map((topicId, index) =>
-            <TagBlog key={index} name={topicId} />
+            <TagBlog key={index} name={topicMap.get(topicId) ?? ""} />
           )}
         </div>
         <div className={style.itemTextDescription}>

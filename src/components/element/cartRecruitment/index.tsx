@@ -1,30 +1,35 @@
 import style from "./style.module.scss"
 import logo from "../../../asset/logoRecruitment.png"
 import { useNavigate } from "react-router-dom"
-const CartRecruitment = () => {
+import clsx from "clsx"
+type Props = {
+    recruitment: Recruitment,
+    asideMap: Map<string, string>
+}
+const CartRecruitment = ({ recruitment, asideMap }: Props) => {
     const navigate = useNavigate()
     const handleClick = () => {
-        navigate("/recruitment/details")
+        navigate("/recruitment/details/" + recruitment.id)
     }
     return (
         <div className={style.cart}>
             <div className={style.cartHeader}>
                 <img src={logo} className={style.cartLogo} alt="logo" />
                 <div className={style.textHeader}>
-                    <div className={style.cartTitle}>Nhân viên thiết kế đồ họa</div>
-                    <div className={style.cartSubtitle}>Nhân viên chính thức</div>
+                    <div className={style.cartTitle}>{recruitment.title}</div>
+                    <div className={style.cartSubtitle}>{asideMap.get(recruitment.formOfWorkId)}</div>
                     <div className={style.textFooter}>
                         <div className={style.address}>
-                            <div>CVVH Đầm Sen</div>
+                            <div>{asideMap.get(recruitment.workplaceId)}</div>
                             <div>2 tuần trước</div>
                         </div>
-                        <div className={style.status}>Đang tuyển</div>
+                        <div className={clsx(style.status, { [style.true]: recruitment.status, [style.false]: !recruitment.status })}>{recruitment.status ? "Đang tuyển" : "Đã hết hạn"}</div>
                     </div>
                 </div>
             </div>
             <div className={style.cartDescription}>
-                <div>Mô tả công việc:</div>
-                <p>Trung tâm dịch vụ du lịch Đầm Sen cần tuyển 2 Nhân viên kinh doanh lữ hành. Yêu cầu: Tốt nghiệp CĐ, ĐH chuyên ngành Du lich, QT kinh doanh, Marketing. Am hiểu tâm lý ...</p>
+                <div className={style.titleDescription}>Mô tả công việc:</div>
+                <div className={style.description}>{recruitment.description}</div>
             </div>
             <button onClick={handleClick} className={style.cartButton}>Xem chi tiết</button>
         </div>

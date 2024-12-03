@@ -12,14 +12,22 @@ const RecruitmentPage = () => {
     const [fieldList, setFieldList] = useState<Field[]>([])
     const [formOfWorkList, setFormOfWorkList] = useState<FormOfWork[]>([])
     const [workplaceList, setWorkplaceList] = useState<Workplace[]>([])
+    const [asideMap, setAsideMap] = useState<Map<string, string>>(new Map<string, string>())
+    const [recruitmentList, setRecruitmentList] = useState<Recruitment[]>([])
     useEffect(() => {
         getInitData()
+        getRecruitmentList()
     }, [])
+    const getRecruitmentList = () => {
+        FirebaseUtil.readAll<Recruitment>(TypeEnum.RECRUITMENT).then(setRecruitmentList)
+    }
     const getInitData = async () => {
         try {
             const fields = await FirebaseUtil.readAll<Field>(TypeEnum.FIELD)
             const formOfWorks = await FirebaseUtil.readAll<FormOfWork>(TypeEnum.FORM_OF_WORK)
             const workplaces = await FirebaseUtil.readAll<Workplace>(TypeEnum.WORKPLACE)
+            const asidesMap = [...fields, ...formOfWorks, ...workplaces].map((item): [string, string] => [item.id ?? "", item.name])
+            setAsideMap(new Map<string, string>(asidesMap))
             setFieldList(fields)
             setFormOfWorkList(formOfWorks)
             setWorkplaceList(workplaces)
@@ -44,7 +52,7 @@ const RecruitmentPage = () => {
                     workplaceList={workplaceList}
                     setWorkplaceId={setWorkplaceId}
                 />
-                <GridRecruitment />
+                <GridRecruitment asideMap={asideMap} recruitmentList={recruitmentList} />
             </div>
         </div>
     )

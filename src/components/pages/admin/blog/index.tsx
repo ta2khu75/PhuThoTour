@@ -4,9 +4,12 @@ import { useEffect, useState } from "react"
 import FirebaseUtil from "../../../../util/firebaseUtil"
 import { TypeEnum } from "../../../../types/TypeEnum"
 import { Link, useNavigate } from "react-router-dom"
+import { Timestamp } from "firebase/firestore"
+import dayjs from "dayjs"
 const BlogListPage = () => {
   const navigate = useNavigate()
   const [blogList, setBlogList] = useState<Blog[]>([])
+  const [topicMap, setTopicMap] = useState<Map<string, string>>(new Map<string, string>());
   const columns: TableProps<Blog>['columns'] = [
     {
       title: 'STT',
@@ -18,15 +21,25 @@ const BlogListPage = () => {
       dataIndex: 'title',
       key: 'title',
     }, {
-      title: "",
+      title: "Chủ đề",
       dataIndex: "topicIds",
       key: "topicIds",
+      render: (topicIds: string[]) => <>{topicIds.map(topicId => { return `${topicMap.get(topicId)}, ` })}</>
     }, {
+      title: "Lượt xem",
+      dataIndex: "views",
+      key: "views"
+    }, {
+      title: "Ngày tạo",
+      dataIndex: "createdDate",
+      key: "createdDate",
+      render: (createdDate: Timestamp) => <>{dayjs(createdDate.toDate()).format("DD/MM/YYYY")}</>
+    }
+    , {
       title: "Hành động",
       dataIndex: "id",
       key: "action",
-      render: (id: string, record: Blog) => (<div className="flex content-between items-center">
-        {/* <Button onClick={() => handleEdit(record)}>Sửa</Button> */}
+      render: (id: string) => (<div className="flex content-between items-center">
         <Link to={"/admin/blog/edit/" + id}>Sửa</Link>
         <Popconfirm
           title="Xóa chủ đề"
@@ -42,7 +55,18 @@ const BlogListPage = () => {
   ];
   useEffect(() => {
     getBlogList()
+    getTopicList()
   }, [])
+  const getTopicList = () => {
+    FirebaseUtil.readAll<Topic>(TypeEnum.TOPIC).then(response => {
+      const topicsMap = response.reduce((topic, item) => {
+        if (item.id)
+          topic.set(item.id, item.name)
+        return topic
+      }, new Map<string, string>())
+      setTopicMap(topicsMap)
+    })
+  }
 
   const handleDelete = (id: string) => {
     FirebaseUtil.deleteById(TypeEnum.BLOG, id).then(() => {

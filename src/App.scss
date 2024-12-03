@@ -25,3 +25,7 @@
 .grid-cols-2 {
   grid-template-columns: repeat(2, 1fr);
 }
+
+.grow1 {
+  flex-grow: 1;
+}
