@@ -68,7 +68,7 @@ const RecruitmentDetailsPage = () => {
             </header >
             <article>
                 <header>
-                    <img src={imageContent} alt="" />
+                    <img src={recruitment?.imageUrl} alt={recruitment?.title} />
                 </header>
             </article>
             <main>
@@ -86,7 +86,7 @@ const RecruitmentDetailsPage = () => {
                 <div className={style.titleContent}>
                     Ứng tuyển Online
                 </div>
-                <FormApply />
+                <FormApply recruitmentId={id} />
                 {/* <Form layout="vertical" className={style.form}>
                     <div className={style.formItem}>
                         <Form.Item label="Họ tên">

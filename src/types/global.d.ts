@@ -1,4 +1,4 @@
-import { DocumentReference } from "firebase/firestore";
+import { DocumentReference, Timestamp } from "firebase/firestore";
 
 // global.d.ts
 export { }; // Đảm bảo tệp này được coi là module
@@ -36,19 +36,22 @@ declare global {
         fileUrl?: string;
     }
     interface Apply {
+        id?: string;
+        recruitmentId: string;
         name: string;
         gender: boolean;
-        birthDay: Date;
+        birthDay: string;
         placeOfBirth: string;
         currentResidence: string;
         phone: string;
         email: string;
         facebook: string;
         level: string;
-        fileCv: string;
+        cvUrl: string;
         collaborate: ApplyOptions;
         overtime: ApplyOptions;
         oldWorkplace: string;
         myLevel: string;
+        createdDate: Date | Timestamp;
     }
 }

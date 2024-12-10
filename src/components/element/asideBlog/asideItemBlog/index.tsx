@@ -1,14 +1,19 @@
 import style from "./style.module.scss"
 import image from "../../../../asset/bg.png"
-const AsideItemElement = () => {
+import { FunctionUtil } from "../../../../util/FunctionUtil"
+import { Link } from "react-router-dom"
+type Props = {
+    blog: Blog
+}
+const AsideItemElement = ({ blog }: Props) => {
     return (
-        <div className={style.card}>
-            <img src={image} className={style.cardImage} alt="image item" />
+        <Link to={"/blog/details/" + blog.id} className={style.card}>
+            <img src={blog.imageUrl} className={style.cardImage} alt={blog.title} />
             <div className={style.cartText}>
-                <div className={style.cartTitle}>Thông báo đấu giá giữ xe tại CVHH Đầm Sen</div>
-                <div className={style.cartDescription}>10k views . 20/02/2022</div>
+                <div className={style.cartTitle}>{blog.title}</div>
+                <div className={style.cartDescription}>{blog.views ?? 0} views * {FunctionUtil.convertCreatedDateToString(blog.createdDate)}</div>
             </div>
-        </div>
+        </Link>
     )
 }
 

@@ -5,8 +5,9 @@ import clsx from "clsx"
 type Props = {
     recruitment: Recruitment,
     asideMap: Map<string, string>
+    workplaceMap: Map<string, string>
 }
-const CartRecruitment = ({ recruitment, asideMap }: Props) => {
+const CartRecruitment = ({ recruitment, asideMap, workplaceMap }: Props) => {
     const navigate = useNavigate()
     const handleClick = () => {
         navigate("/recruitment/details/" + recruitment.id)
@@ -14,7 +15,7 @@ const CartRecruitment = ({ recruitment, asideMap }: Props) => {
     return (
         <div className={style.cart}>
             <div className={style.cartHeader}>
-                <img src={logo} className={style.cartLogo} alt="logo" />
+                <img src={workplaceMap.get(recruitment.workplaceId) !== "" ? workplaceMap.get(recruitment.workplaceId) : logo} className={style.cartLogo} alt="logo" />
                 <div className={style.textHeader}>
                     <div className={style.cartTitle}>{recruitment.title}</div>
                     <div className={style.cartSubtitle}>{asideMap.get(recruitment.formOfWorkId)}</div>

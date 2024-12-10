@@ -1,8 +1,9 @@
-import React from 'react';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Menu } from 'antd';
+import { Button, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import style from "./style.module.scss"
+import { useAppDispatch } from '../../../redux/hook';
+import { authAction } from '../../../redux/slice/authSlice';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -10,55 +11,59 @@ const items: MenuItem[] = [
     {
         key: 'blog',
         label: 'Bài viết',
-        icon: <MailOutlined />,
     },
     {
         key: 'topic',
         label: 'Chủ đề',
-        icon: <MailOutlined />,
     },
     {
         key: 'document',
         label: 'Tài liệu',
-        icon: <AppstoreOutlined />,
     },
     {
         key: 'recruitment',
         label: 'Tuyển dụng',
-        icon: <SettingOutlined />,
     },
     {
         key: 'field',
         label: 'Lĩnh vực',
-        icon: <SettingOutlined />,
     },
     {
         key: 'form-of-work',
         label: 'Hình thức làm việc',
-        icon: <SettingOutlined />,
     },
     {
         key: 'workplace',
         label: 'Nơi làm việc',
-        icon: <SettingOutlined />,
+    },
+    {
+        key: 'apply',
+        label: 'Ứng tuyển',
     },
 ];
 
 const Aside = () => {
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
     const onClick: MenuProps['onClick'] = (e) => {
         navigate(`/admin/${e.key}`)
     };
-
+    const onLogoutClick = () => {
+        dispatch(authAction.reset());
+        navigate("/")
+    }
     return (
-        <Menu
-            onClick={onClick}
-            style={{ width: 256 }}
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
-            items={items}
-        />
+        <div className={style.container}>
+            <Menu
+                onClick={onClick}
+                style={{ width: 256 }}
+                defaultSelectedKeys={['1']}
+                defaultOpenKeys={['sub1']}
+                mode="inline"
+                items={items}
+            />
+            <Button onClick={onLogoutClick}>Đăng xuất</Button>
+        </div>
     );
 };
 

@@ -27,6 +27,13 @@
         }
     }
 
+    .pdf {
+        height: 747px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 48px;
+    }
+
     footer {
         .title {
             font-weight: 600;

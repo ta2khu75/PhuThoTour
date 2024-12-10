@@ -52,7 +52,14 @@ const WorkplaceListPage = () => {
             title: 'Tên',
             dataIndex: 'name',
             key: 'name',
-        }, {
+        },
+        {
+            title: 'Hình',
+            dataIndex: 'imageUrl',
+            key: 'imageUrl',
+            render: (imageUrl: string, record: Workplace) => <img src={imageUrl} width={"100px"} height={"100px"} alt={record?.name} />
+        },
+        {
             title: "Hành động",
             dataIndex: "id",
             key: "action",

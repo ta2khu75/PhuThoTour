@@ -5,7 +5,9 @@ const Introduction = () => {
     return (
         <div className={style.introduction} >
             <img src={logo} className={style.logo} alt="logo" />
-            <img src={bottom} className={style.bottom} alt="bottom" />
+            <a href="#content">
+                <img src={bottom} className={style.bottom} alt="bottom" />
+            </a>
         </div>
     )
 }

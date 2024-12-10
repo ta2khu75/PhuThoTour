@@ -6,8 +6,9 @@
     background-color: white;
     border: 1px $primary-500 solid;
     width: 16px;
+    cursor: pointer;
     height: 16px;
 }
-.button+.button{
-    margin-left: 12px;
-}
+// .button+.button{
+//     margin-left: 12px;
+// }

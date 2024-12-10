@@ -1,7 +1,10 @@
 import style from "./style.module.scss"
-const AroundButton = () => {
+type Props = {
+    handleClick: () => void
+}
+const AroundButton = ({ handleClick }: Props) => {
     return (
-        <button className={style.button}></button>
+        <button onClick={handleClick} className={style.button}></button>
     )
 }
 

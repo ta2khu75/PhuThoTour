@@ -14,6 +14,15 @@
 }
 
 .cartDescription {
+    display: -webkit-box;
+    /* Use a flex-like container */
+    -webkit-box-orient: vertical;
+    /* Set orientation to vertical */
+    overflow: hidden;
+    /* Hide overflow */
+    text-overflow: ellipsis;
+    /* Adds ellipsis for overflow */
+    -webkit-line-clamp: 2;
     font-size: 18px;
     line-height: 27px;
     font-weight: 400;
@@ -23,6 +32,7 @@
 .cartContainerText {
     width: 845px;
     height: 174px;
+
 }
 
 .cartContainer {
@@ -32,11 +42,13 @@
 }
 
 .cartTitle {
+    // text-decoration: none;
     color: $primary-500;
     font-weight: bold;
     font-size: 38px;
     margin-bottom: 24px;
     line-height: 42.56px;
+    text-decoration: none !important;
 }
 
 .leftAction {
@@ -48,10 +60,19 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: end;
+    img{
+        cursor: pointer;
+    }
 }
 
 .cartActionLogo {
     width: 26.06px;
     height: 16.61px;
     margin-right: 4.89px;
+}
+
+.action {
+    column-gap: 12px;
+    display: flex;
+    align-items: center;
 }

@@ -17,6 +17,9 @@ import FormOfWordListPage from "./components/pages/admin/formOfWork";
 import FieldListPage from "./components/pages/admin/Field";
 import WorkplaceListPage from "./components/pages/admin/workplace";
 import RecruitmentListPage from "./components/pages/admin/recruitment";
+import RenderPdf from "./components/element/renderPdf";
+import ApplyListPage from "./components/pages/admin/apply";
+import PrivateElement from "./components/element/privateElement";
 
 const router = createBrowserRouter([
     {
@@ -47,8 +50,9 @@ const router = createBrowserRouter([
     {
         element: <LoginPage />,
         path: "/login"
-    }, {
-        element: <AdminPage />,
+    },
+    {
+        element: <PrivateElement><AdminPage /></PrivateElement>,
         path: "/admin",
         children: [
             {
@@ -63,6 +67,9 @@ const router = createBrowserRouter([
             }, {
                 path: "workplace",
                 element: <WorkplaceListPage />,
+            }, {
+                path: "apply",
+                element: <ApplyListPage />,
             },
             {
                 path: "blog",

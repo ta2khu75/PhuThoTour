@@ -1,29 +1,31 @@
 import { Pagination } from "antd"
 import CartRecruitment from "../cartRecruitment"
 import style from "./style.module.scss"
+import { useEffect, useState } from "react"
 type Props = {
     recruitmentList: Recruitment[],
-    asideMap: Map<string, string>
+    asideMap: Map<string, string>,
+    workplaceMap: Map<string, string>
 }
-const GridRecruitment = ({ recruitmentList, asideMap }: Props) => {
+const GridRecruitment = ({ recruitmentList, asideMap, workplaceMap }: Props) => {
+    const size = 9
+    const [page, setPage] = useState(1)
+    const [recruitmentListShow, setRecruitmentListShow] = useState<Recruitment[]>([])
+    useEffect(() => {
+        const startIndex = (page - 1) * size
+        const endIndex = startIndex + size
+        setRecruitmentListShow(recruitmentList.slice(startIndex, endIndex))
+    }, [page, recruitmentList])
+    useEffect(() => {
+        setPage(1)
+    }, [recruitmentList])
     return (
         <div>
             <div className={style.grid}>
-                {recruitmentList.map((recruitment, index) => <CartRecruitment asideMap={asideMap} key={index} recruitment={recruitment} />)}
-                {/*
-                <CartRecruitment />
-                <CartRecruitment />
-                <CartRecruitment />
-                <CartRecruitment />
-                <CartRecruitment />
-                <CartRecruitment />
-                <CartRecruitment />
-                <CartRecruitment />
-                <CartRecruitment />
-                */}
+                {recruitmentListShow.map((recruitment) => <CartRecruitment workplaceMap={workplaceMap} asideMap={asideMap} key={recruitment.id} recruitment={recruitment} />)}
             </div>
             <div className={style.pagination}>
-                <Pagination align="center" defaultCurrent={1} total={recruitmentList.length} />
+                <Pagination onChange={(value) => setPage(value)} align="center" pageSize={size} current={page} total={recruitmentList.length} />
             </div>
         </div>
     )

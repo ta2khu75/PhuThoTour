@@ -1,8 +1,9 @@
 import style from "./style.module.scss"
 import logoBlur from "../../../asset/logoBlur.png"
-import { Input } from "antd"
 import AsideItemRecruitment from "./asideItemRecruitment"
+import SearchElement from "../searchElement"
 type Props = {
+    setSearch: (value: string) => void
     fieldList: Field[],
     setFieldId: React.Dispatch<React.SetStateAction<string | undefined>>,
     setFormOfWorkId: React.Dispatch<React.SetStateAction<string | undefined>>,
@@ -11,15 +12,14 @@ type Props = {
     workplaceList: Workplace[],
     fieldId?: string,
     workplaceId?: string,
-    formOfWorkId?: string
+    formOfWorkId?: string,
 }
-const AsideRecruitment = ({ fieldList, formOfWorkList, workplaceList, fieldId, workplaceId, formOfWorkId, setFieldId, setFormOfWorkId, setWorkplaceId }: Props) => {
-
+const AsideRecruitment = ({ fieldList, formOfWorkList, workplaceList, fieldId, workplaceId, formOfWorkId, setFieldId, setFormOfWorkId, setWorkplaceId, setSearch }: Props) => {
     return (
         <div className={style.aside}>
             <div className={style.asideContainer}>
                 <div className={style.asideSearch}>
-                    <Input.Search placeholder="Tìm kiếm" />
+                    <SearchElement setSearch={setSearch} />
                 </div>
                 <AsideItemRecruitment list={fieldList} id={fieldId} title="Lĩnh vực" handleClick={setFieldId} />
                 <AsideItemRecruitment list={formOfWorkList} id={formOfWorkId} title="Hình thức làm việc" handleClick={setFormOfWorkId} />

@@ -1,16 +1,16 @@
 import AsideItemElement from "./asideItemBlog"
 import style from "./style.module.scss"
-import logoBlur from "../../../asset/logoBlur.png"
-const AsideItemBlog = () => {
+type Props = {
+    blogList: Blog[]
+}
+const AsideItemBlog = ({ blogList }: Props) => {
     return (
         <div className={style.aside}>
             <div className={style.asideTitle}>Bài mới nhất</div>
             <div className={style.asideContent}>
-                <AsideItemElement />
-                <AsideItemElement />
-                <AsideItemElement />
-                <AsideItemElement />
-                <AsideItemElement />
+                {blogList.map((blog) =>
+                    <AsideItemElement key={blog.id} blog={blog} />
+                )}
             </div>
         </div>
     )

@@ -22,8 +22,9 @@ const GridBlogItem = ({ blog, showDescription = false, topicMap, itemWidth = "26
         <div className={style.itemTextDescription}>Admin</div>
         <div className={style.itemTitle}>{blog?.title}</div>
         {showDescription &&
-          <div className={style.description}>
-            Công ty Cổ phần Dịch vụ Du lịch Phú Thọ thông báo đến các nhà thầu tham gia chào hàng cạnh tranh Gói thầu: Cung cấp, lắp đặt 02 màn...
+          <div className={style.description} dangerouslySetInnerHTML={{ __html: blog.content }}>
+
+            {/* Công ty Cổ phần Dịch vụ Du lịch Phú Thọ thông báo đến các nhà thầu tham gia chào hàng cạnh tranh Gói thầu: Cung cấp, lắp đặt 02 màn... */}
           </div>
         }
         <div className={style.containerTag}>
@@ -32,7 +33,7 @@ const GridBlogItem = ({ blog, showDescription = false, topicMap, itemWidth = "26
           )}
         </div>
         <div className={style.itemTextDescription}>
-          10N lượt xem * {FunctionUtil.convertCreatedDateToString(blog.createdDate)}
+          {blog.views} lượt xem * {FunctionUtil.convertCreatedDateToString(blog.createdDate)}
         </div>
       </div>
     </Link>

@@ -31,7 +31,7 @@ export class FunctionUtil {
             return dayjs(date).format("DD/MM/YYYY HH:mm")
         }
     }
-    static convertCreateDateToStringVn(date: Date | Timestamp) {
+    static convertCreateDateToStringVn(date: Date | Timestamp | undefined) {
         dayjs.locale("vi");
         if (date instanceof Timestamp) {
             const datee = dayjs(date.toDate());
@@ -49,4 +49,8 @@ export class FunctionUtil {
             return `Tháng ${monthInWords} ${day}, ${year}`;
         }
     }
+    static isNumeric(value: string) {
+        return /^-?\d+$/.test(value);
+    }
+
 }

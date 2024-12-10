@@ -14,15 +14,21 @@ import document8 from "../../../asset/content/page/document/document8.jpeg"
 import { useEffect, useState } from "react"
 import FirebaseUtil from "../../../util/firebaseUtil"
 import { TypeEnum } from "../../../types/TypeEnum"
+import dayjs from "dayjs"
+import { where } from "firebase/firestore"
 const DocumentPage = () => {
     const [documentList, setDocumentList] = useState<Documentt[]>([])
+    const [rangeDate, setRangeDate] = useState<[dayjs.Dayjs | null, dayjs.Dayjs | null] | null>();
+    const [search, setSearch] = useState("")
     useEffect(() => {
         getDocumentList()
-    })
+    }, [rangeDate])
     const getDocumentList = () => {
-        FirebaseUtil.readAll<Documentt>(TypeEnum.DOCUMENT).then(data => {
-            setDocumentList(data)
-        })
+        if (rangeDate?.[0] && rangeDate?.[1]) {
+            FirebaseUtil.queryData<Documentt>(TypeEnum.DOCUMENT, where("createdDate", ">=", rangeDate[0].toDate()), where("createdDate", "<=", rangeDate[1].toDate())).then(setDocumentList)
+        } else {
+            FirebaseUtil.readAll<Documentt>(TypeEnum.DOCUMENT).then(setDocumentList)
+        }
     }
     return (
         <div>
@@ -47,7 +53,7 @@ const DocumentPage = () => {
                 </a>
             </div>
             <div id="table" className={style.tableData}>
-                <TableDocument documentList={documentList} />
+                <TableDocument setRangeDate={setRangeDate} setSearch={setSearch} documentList={documentList.filter(document => document.title.includes(search))} />
             </div>
         </div>
     )
