@@ -9,7 +9,6 @@ import { TypeEnum } from "../../../../../types/TypeEnum"
 import { FileUtil } from "../../../../../util/fileUtil"
 import { v4 as uuidv4 } from 'uuid';
 import { Notify } from "../../../../../util/notificationUtil"
-import { error } from "console"
 type Props = {
     recruitmentId?: string
 }
@@ -44,7 +43,7 @@ const FormApply = ({ recruitmentId }: Props) => {
         }
     }
     return (
-        <Form<Apply> onFinish={onFinish} form={form} initialValues={{ overtime: ApplyOptions.YES, collaborate: ApplyOptions.YES, gender: true }} layout="vertical" className={style.form}>
+        <Form<Apply> onFinish={onFinish} form={form} initialValues={{ overtime: ApplyOptions.YES, collaborate: ApplyOptions.YES, gender: true, facebook: "", myLevel: "", oldWorkplace: "" }} layout="vertical" className={style.form}>
             <div className={style.formItem}>
                 <Form.Item<Apply> label="Họ tên" name={"name"} rules={[{ required: true, message: "Vui lòng nhập họ và tên" }]}>
                     <Input className={style.input} placeholder="Nguyễn Văn A" />
