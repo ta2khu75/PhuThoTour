@@ -9,14 +9,14 @@ const Navigation = () => {
       <Link className={clsx(style.navItem, { [style.active]: pathname === "/" })} to={"/"}>
         Trang chủ
       </Link >
-      <Link className={clsx(style.navItem, { [style.active]: pathname === "/blog" })} to={"/blog"}>
+      <Link className={clsx(style.navItem, { [style.active]: pathname.includes("/blog") })} to={"/blog"}>
         Bài viết
       </Link >
       <LogoElement className={style.logo} />
-      <Link className={clsx(style.navItem, { [style.active]: pathname === "/document" })} to={"/document"}>
+      <Link className={clsx(style.navItem, { [style.active]: pathname.includes("/document") })} to={"/document"}>
         Tài liệu
       </Link >
-      <Link className={clsx(style.navItem, { [style.active]: pathname === "/recruitment" })} to={"/recruitment"}>
+      <Link className={clsx(style.navItem, { [style.active]: pathname.includes("/recruitment") })} to={"/recruitment"}>
         Tuyển dụng
       </Link >
     </div>

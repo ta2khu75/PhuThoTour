@@ -17,15 +17,15 @@ const Footer = () => {
                         </div>
                     </  div>
                     <div className={style.copyright}>Copyright@ Công ty Cổ phần Dịch vụ Du lịch Phú Thọ (Phuthotourist)</div>
+                    <div>Nguồn: ALTA Software</div>
                 </div>
                 <div>
                     <div className={style.footerTitle}>LIÊN HỆ</div>
                     <ul className={style.ulMiddle}>
-                        <li><img src={iconLocation} /><span>15 Đường số 2, Cư xá Lữ Gia,
-                            Phường 15, Quận 11, TP. HCM </span></li>
-                        <li><img src={iconPhone} /><span>02838650921</span></li>
-                        <li><img src={iconEmail} /><span>vanphong@damsenpark.vn</span></li>
-                        <li><img src={iconFacebook} /><span>Phuthotourist</span></li>
+                        <li><img src={iconLocation} /><span>Hẻm 618/13/8f, phường 11, quận Gò Vấp, TP. Hồ Chí Minh</span></li>
+                        <li><img src={iconPhone} /><span>0788912586</span></li>
+                        <li><img src={iconEmail} /><span>tranngocminh474@gmail.com</span></li>
+                        <li><img src={iconFacebook} /><span><a href="https://www.facebook.com/profile.php?id=100024083208788" target="_blank" style={{color:"white"}}>Trần Minh</a></span></li>
                     </ul>
                 </div>
                 <div>
